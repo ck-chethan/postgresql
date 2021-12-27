@@ -246,3 +246,9 @@ FROM customer AS c
 WHERE EXISTS
 (SELECT * FROM payment as p
 WHERE p.customer_id = c.customer_id AND amount > 11);
+
+
+SELECT f1.title, f2.title, f1.length 
+FROM film as f1 INNER JOIN film as f2
+ON f1.film_id != f2.film_id
+AND f1.length = f2.length;
