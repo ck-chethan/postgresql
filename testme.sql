@@ -44,3 +44,12 @@ NULLIF(SUM(CASE
 	ELSE 0
 END),0) repartment_ratio
 FROM dpts;
+
+
+CREATE TABLE simple(
+	a INTEGER,
+	b INTEGER,
+	c INTEGER
+);
+
+SELECT * FROM simple;
