@@ -252,3 +252,64 @@ SELECT f1.title, f2.title, f1.length
 FROM film as f1 INNER JOIN film as f2
 ON f1.film_id != f2.film_id
 AND f1.length = f2.length;
+
+SELECT customer_id,
+CASE 
+	WHEN (customer_id <= 100) THEN 'Premium'
+	WHEN (customer_id BETWEEN 100 AND 200) THEN 'Plus'
+	ELSE 'Others'
+END AS Customer_class
+FROM customer;
+
+SELECT customer_id,
+CASE customer_id
+	WHEN 1 THEN 'Winner'
+	WHEN 2 THEN 'Runner'
+	WHEN 3 THEN 'Runner2'
+	ELSE 'Others'
+END AS Customer_class
+FROM customer;
+
+SELECT rental_rate,
+CASE rental_rate
+	WHEN 0.99 THEN 1
+	ELSE 0
+END
+FROM film;
+
+SELECT 
+SUM(CASE rental_rate
+	WHEN 0.99 THEN 1
+	ELSE 0
+END) AS bargains,
+SUM(CASE rental_rate
+	WHEN 2.99 THEN 1
+	ELSE 0
+END) AS regular,
+SUM(CASE rental_rate
+	WHEN 4.99 THEN 1
+	ELSE 0
+END) AS premium
+FROM film;
+
+SELECT 
+CASE rating
+	WHEN 'R' THEN 1
+	ELSE 0
+END AS R
+FROM film;
+
+SELECT 
+SUM(CASE rating
+	WHEN 'R' THEN 1
+	ELSE 0
+END) AS r,
+SUM(CASE rating
+	WHEN 'PG' THEN 1
+	ELSE 0
+END) AS pg,
+SUM(CASE rating
+	WHEN 'PG-13' THEN 1
+	ELSE 0
+END) AS pg13
+FROM film;
